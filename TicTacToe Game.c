@@ -21,7 +21,7 @@ void board(){
 }
 
  void turns() {
-    while(key!=10){//if(brd[row][col]!='X'||brd[row][col]!='O')){
+    while(key!=10){ 
 	if(turn==0){
 	   printf("Player1:");
 	   scanf("%d",&ch);
@@ -51,7 +51,7 @@ void board(){
 		    case 9: row=2;col=2;
 		    break;
 		    default: printf("Invalid choice\n");
-	       }
+	}
 	if(turn==0 && brd[row][col]!='X' && brd[row][col]!='O'){
 	  brd[row][col]='X';
 	  turn++;
@@ -65,31 +65,30 @@ void board(){
 	   key--;
 	}
 
- board();
- for(i=0;i<3;i++)
-   for(j=0;j<3;j++)
-     if((brd[i][j]=='X' && brd[i][j+1]=='X' && brd[i][j+2]=='X')||(brd[i][j]=='X' && brd[i+1][j]=='X' && brd[i+2][j]=='X')){
-	printf("X wins!!!\n");
-	return;
-     }
-     else if((brd[i][j]=='O' && brd[i][j+1]=='O' && brd[i][j+2]=='O')||(brd[i][j]=='O' && brd[i+1][j]=='O' && brd[i+2][j]=='O')){
-       printf("O wins!!!\n");
-       return;
-     }
+ 	board();
+ 	for(i=0;i<3;i++)
+       		if( ( brd[i][0] == 'X' && brd[i][0] == brd[i][1] && brd[i][1] == brd[i][2]  ) || ( brd[0][i] == 'X' && brd[0][i] == brd[1][i] && brd[1][i] == brd[2][i] ) ){
+	 		printf("X wins!!!\n");
+	 		return;
+        	}
+       		else if( ( brd[i][0] == 'O' && brd[i][0] == brd[i][1] && brd[i][1] == brd[i][2]  ) || ( brd[0][i] == 'O' && brd[0][i] == brd[1][i] && brd[1][i] == brd[2][i] ) ){
+         		printf("O wins!!!\n");
+         		return;
+     		}
 
- if(brd[0][0]=='X' && brd[1][1]=='X' && brd[2][2]=='X'||brd[0][2]=='X' && brd[1][1]=='X' && brd[2][0]=='X'){
-   printf("X wins!!!\n");
-   return;
- }
- else if(brd[0][0]=='O' && brd[1][1]=='O' && brd[2][2]=='O'||brd[0][2]=='O' && brd[1][1]=='O' && brd[2][0]=='O'){
-   printf("O wins!!!\n");
-   return;
- }
+ 	if(brd[0][0]=='X' && brd[1][1]=='X' && brd[2][2]=='X'||brd[0][2]=='X' && brd[1][1]=='X' && brd[2][0]=='X'){
+   		printf("X wins!!!\n");
+   		return;
+ 	}
+ 	else if(brd[0][0]=='O' && brd[1][1]=='O' && brd[2][2]=='O'||brd[0][2]=='O' && brd[1][1]=='O' && brd[2][0]=='O'){
+   		printf("O wins!!!\n");
+   		return;
+ 	}
 
- key++;
- }
- if(key==10)
- printf("Draw");
+ 	key++;
+     }
+     if(key==10)
+ 	printf("Draw");
  }
 
 
